@@ -14,9 +14,9 @@ app.use('/api/auth', authRoutes);
 app.use('/api/blogs', blogRoutes);
 
 // test API
-// app.get('/', (req, res) => {
-//     res.send('Blog API is running');
-// });
+app.get('/', (req, res) => {
+    res.send('Blog API is running');
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {

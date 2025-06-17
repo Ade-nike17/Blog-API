@@ -17,7 +17,12 @@ afterAll(async () => {
 });
 
 afterEach(async () => {
-    const collections = await mongoose.connection.db.collections();
+    const db = mongoose.connection.db;
+    if (!db) {
+        console.warn('Skipping cleanup: DB not connected');
+    }
+
+    const collections = await db.collections();
     for (const collection of collections) {
         await collection.deleteMany({});
     }
